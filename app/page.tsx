@@ -1,13 +1,22 @@
-import { SignUpButton } from "@clerk/nextjs";
-import { Sign } from "crypto";
+import Header from "@/components/landing/Header";
+import Hero from "@/components/landing/Hero";
+import HowItWorks from "@/components/landing/HowItWorks";
+import WhatToAsk from "@/components/landing/WhatToAsk";
+import PricingSection from "@/components/landing/PricingSection";
+import CTA from "@/components/landing/CTA";
+import Footer from "@/components/landing/Footer"; 
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <SignUpButton>
-      <button className="bg-blue-500 text-white px-4 py-2 rounded">
-        Sign Up
-      </button>
-    </SignUpButton>
+    <>
+   <Header />
+   <Hero />
+   <HowItWorks />
+   <WhatToAsk />
+   <PricingSection />
+   <CTA /> 
+  <Footer />
+  </>
   );
 }

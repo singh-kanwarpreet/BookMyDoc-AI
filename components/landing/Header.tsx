@@ -102,7 +102,7 @@ function Header() {
               </Button>
             </SheetTrigger>
 
-            <SheetContent side="right" className="w-[300px]">
+            <SheetContent side="right" className="w-75">
               <div className="flex flex-col gap-6 mt-8">
                 
                 <a href="#" className="text-lg font-medium">

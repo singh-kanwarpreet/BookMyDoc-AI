@@ -45,7 +45,7 @@ function Navbar() {
             href="/dashboard"
             className="flex items-center gap-3 transition-opacity hover:opacity-90"
           >
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-400 shadow-md">
+            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-linear-to-br from-blue-600 to-cyan-400 shadow-md">
               <Image
                 src="/logo.png"
                 alt="BookMyDoc AI Logo"

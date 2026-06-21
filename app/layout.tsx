@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Inter, Manrope } from "next/font/google";
-
 import "./globals.css";
-
+import Providers from "@/components/providers/TanStackProvider";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -25,6 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <Providers>
     <ClerkProvider>
       <html
         lang="en"
@@ -35,5 +35,6 @@ export default function RootLayout({
         </body>
       </html>
     </ClerkProvider>
+    </Providers>
   );
 }

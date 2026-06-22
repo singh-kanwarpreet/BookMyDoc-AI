@@ -1,5 +1,8 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { SignUpButton } from "@clerk/nextjs";
+import { SignUpButton, useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 import { CheckCircleIcon } from "lucide-react";
 
 const plans = [
@@ -10,50 +13,37 @@ const plans = [
     buttonText: "Get Started Free",
     features: [
       "Unlimited appointment booking",
-      "Find doctors in your area",
-      "Basic text chat support",
-      "Appointment reminders",
+      "Centralized appointment booking",
+      "Email appointment confirmations",
     ],
   },
   {
-    name: "AI Basic",
+    name: "Pro Plan",
     price: "$9",
     description: "AI consultations + appointment booking",
-    buttonText: "Start AI Basic",
+    buttonText: "Start Pro Plan",
     featured: true,
     features: [
-      "Everything in Free",
-      "10 AI voice calls per month",
-      "AI dental guidance & advice",
-      "Symptom assessment",
-      "Priority support",
-      "Call history & recordings",
-    ],
-  },
-  {
-    name: "AI Pro",
-    price: "$19",
-    description: "Unlimited AI consultations",
-    buttonText: "Upgrade to AI Pro",
-    features: [
-      "Everything in AI Basic",
-      "Unlimited AI voice calls",
-      "Advanced AI dental analysis",
-      "Personalized care plans",
-      "24/7 priority AI support",
-      "Detailed health reports",
+      "Unlimited appointment booking",
+      "Centralized appointment booking",
+      "Email appointment confirmations",
+      "24/7 AI availability",
+      "AI healthcare guidance & advice",
     ],
   },
 ];
 
 function PricingSection() {
+  const { isSignedIn } = useUser();
+  const router = useRouter();
+
   return (
     <section className="relative overflow-hidden py-24">
       {/* Background */}
       <div className="absolute inset-0 bg-linear-to-br from-background via-background to-cyan-500/5" />
 
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.15)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.15)_1px,transparent_1px)] bg-size[size:4rem_4rem] opacity-30" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.15)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.15)_1px,transparent_1px)] bg-size-[4rem_4rem] opacity-30" />
 
       {/* Glows */}
       <div className="absolute left-1/4 top-20 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
@@ -63,7 +53,7 @@ function PricingSection() {
         {/* Header */}
         <div className="mx-auto mb-20 max-w-4xl text-center">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 px-4 py-2 backdrop-blur-md">
-            <span className="h-2 w-2 rounded-full bg-cyan-500 animate-pulse" />
+            <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-500" />
             <span className="text-sm font-medium text-cyan-600 dark:text-cyan-400">
               Simple Pricing
             </span>
@@ -71,7 +61,6 @@ function PricingSection() {
 
           <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
             <span className="block">Choose Your</span>
-
             <span className="block bg-linear-to-r from-blue-600 via-cyan-500 to-blue-500 bg-clip-text text-transparent">
               AI Healthcare Plan
             </span>
@@ -84,13 +73,11 @@ function PricingSection() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative ${
-                plan.featured ? "lg:-mt-4" : ""
-              }`}
+              className={`relative ${plan.featured ? "md:-mt-4" : ""}`}
             >
               {/* Popular Badge */}
               {plan.featured && (
@@ -102,7 +89,7 @@ function PricingSection() {
               )}
 
               <div
-                className={`h-full rounded-[2rem] border backdrop-blur-xl p-8 transition-all duration-300 hover:-translate-y-1 ${
+                className={`h-full rounded-[2rem] border p-8 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 ${
                   plan.featured
                     ? "border-cyan-500/30 bg-background/70 shadow-2xl shadow-cyan-500/10"
                     : "border-border/50 bg-background/60 shadow-lg hover:border-cyan-500/20"
@@ -123,10 +110,7 @@ function PricingSection() {
                       >
                         {plan.price}
                       </span>
-
-                      <span className="mb-1 text-muted-foreground">
-                        /month
-                      </span>
+                      <span className="mb-1 text-muted-foreground">/month</span>
                     </div>
 
                     <p className="mt-3 text-muted-foreground">
@@ -136,32 +120,65 @@ function PricingSection() {
 
                   {/* CTA */}
                   {plan.name === "Free" ? (
-                    <SignUpButton mode="modal">
+                    !isSignedIn ? (
+                      <SignUpButton mode="modal">
+                        <Button
+                          variant="outline"
+                          className="w-full rounded-xl border-border/60 bg-background/40 backdrop-blur-sm"
+                        >
+                          {plan.buttonText}
+                        </Button>
+                      </SignUpButton>
+                    ) : (
                       <Button
                         variant="outline"
                         className="w-full rounded-xl border-border/60 bg-background/40 backdrop-blur-sm"
+                        disabled
                       >
                         {plan.buttonText}
                       </Button>
-                    </SignUpButton>
+                    )
                   ) : plan.featured ? (
-                    <Button
-                      className="
-                      w-full
-                      rounded-xl
-                      bg-linear-to-r
-                      from-blue-600
-                      to-cyan-500
-                      text-white
-                      shadow-lg
-                      transition-all
-                      duration-300
-                      hover:scale-[1.02]
-                      hover:shadow-cyan-500/25
-                    "
-                    >
-                      {plan.buttonText}
-                    </Button>
+                    !isSignedIn ? (
+                      <SignUpButton mode="modal">
+                        <Button
+                          className="
+                            w-full
+                            rounded-xl
+                            bg-linear-to-r
+                            from-blue-600
+                            to-cyan-500
+                            text-white
+                            shadow-lg
+                            transition-all
+                            duration-300
+                            hover:scale-[1.02]
+                            hover:shadow-cyan-500/25
+                          "
+                        >
+                          {plan.buttonText}
+                        </Button>
+                      </SignUpButton>
+                    ) : (
+                      <Button
+                        onClick={() => router.push("/pro")}
+                        className="
+                          w-full
+                          rounded-xl
+                          bg-linear-to-r
+                          from-blue-600
+                          to-cyan-500
+                          text-white
+                          shadow-lg
+                          transition-all
+                          duration-300
+                          hover:scale-[1.02]
+                          hover:shadow-cyan-500/25
+                        "
+                      >
+                        {plan.buttonText}
+                      </Button>
+                    )
                   ) : (
                     <Button
                       variant="outline"
@@ -182,12 +199,8 @@ function PricingSection() {
                   {/* Features */}
                   <div className="space-y-4 pt-2">
                     {plan.features.map((feature) => (
-                      <div
-                        key={feature}
-                        className="flex items-start gap-3"
-                      >
+                      <div key={feature} className="flex items-start gap-3">
                         <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-cyan-500" />
-
                         <span className="text-sm text-muted-foreground">
                           {feature}
                         </span>

@@ -14,28 +14,28 @@ import { toast } from "sonner";
 
 function AppointmentsPage() {
   // state management for the booking process - this could be done with something like Zustand for larger apps
-  const [selectedDentistId, setSelectedDentistId] = useState<string | null>(null);
+  const [selectedDoctorId, setSelectedDoctorId] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedType, setSelectedType] = useState("");
-  const [currentStep, setCurrentStep] = useState(1); // 1: select dentist, 2: select time, 3: confirm
+  const [currentStep, setCurrentStep] = useState(1); // 1: select doctor, 2: select time, 3: confirm
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [bookedAppointment, setBookedAppointment] = useState<any>(null);
 
   const bookAppointmentMutation = useBookAppointment();
   const { data: userAppointments = [] } = useUserAppointments();
 
-  const handleSelectDentist = (dentistId: string) => {
-    setSelectedDentistId(dentistId);
+  const handleSelectDoctor = (doctorId: string) => {
+    setSelectedDoctorId(doctorId);
 
-    // reset the state when dentist changes
+    // reset the state when doctor changes
     setSelectedDate("");
     setSelectedTime("");
     setSelectedType("");
   };
 
   const handleBookAppointment = async () => {
-    if (!selectedDentistId || !selectedDate || !selectedTime) {
+    if (!selectedDoctorId || !selectedDate || !selectedTime) {
       toast.error("Please fill in all required fields");
       return;
     }
@@ -44,7 +44,7 @@ function AppointmentsPage() {
 
     bookAppointmentMutation.mutate(
       {
-        doctorId: selectedDentistId,
+        doctorId: selectedDoctorId,
         date: selectedDate,
         time: selectedTime,
         reason: appointmentType?.name,
@@ -80,7 +80,7 @@ function AppointmentsPage() {
           setShowConfirmationModal(true);
 
           // reset form
-          setSelectedDentistId(null);
+          setSelectedDoctorId(null);
           setSelectedDate("");
           setSelectedTime("");
           setSelectedType("");
@@ -99,22 +99,22 @@ function AppointmentsPage() {
         {/* header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Book an Appointment</h1>
-          <p className="text-muted-foreground">Find and book with verified dentists in your area</p>
+          <p className="text-muted-foreground">Find and book with verified doctors in your area</p>
         </div>
 
         <ProgressSteps currentStep={currentStep} />
 
         {currentStep === 1 && (
           <DoctorSelectionStep
-            selectedDentistId={selectedDentistId}
+            selectedDoctorId={selectedDoctorId}
             onContinue={() => setCurrentStep(2)}
-            onSelectDentist={handleSelectDentist}
+            onSelectDoctor={handleSelectDoctor}
           />
         )}
 
-        {currentStep === 2 && selectedDentistId && (
+        {currentStep === 2 && selectedDoctorId && (
           <TimeSelectionStep
-            selectedDentistId={selectedDentistId}
+            selectedDoctorId={selectedDoctorId}
             selectedDate={selectedDate}
             selectedTime={selectedTime}
             selectedType={selectedType}
@@ -126,9 +126,9 @@ function AppointmentsPage() {
           />
         )}
 
-        {currentStep === 3 && selectedDentistId && (
+        {currentStep === 3 && selectedDoctorId && (
           <BookingConfirmationStep
-            selectedDentistId={selectedDentistId}
+            selectedDoctorId={selectedDoctorId}
             selectedDate={selectedDate}
             selectedTime={selectedTime}
             selectedType={selectedType}

@@ -7,52 +7,52 @@ import { Button } from "../ui/button";
 import { DoctorCardsLoading } from "./DoctorCardsLoading";
 
 interface DoctorSelectionStepProps {
-  selectedDentistId: string | null;
-  onSelectDentist: (dentistId: string) => void;
+  selectedDoctorId: string | null;
+  onSelectDoctor: (doctorId: string) => void;
   onContinue: () => void;
 }
 
 function DoctorSelectionStep({
   onContinue,
-  onSelectDentist,
-  selectedDentistId,
+  onSelectDoctor,
+  selectedDoctorId,
 }: DoctorSelectionStepProps) {
-  const { data: dentists = [], isLoading } = useAvailableDoctors();
+  const { data: doctors = [], isLoading } = useAvailableDoctors();
 
   if (isLoading)
     return (
       <div className="space-y-6">
-        <h2 className="text-2xl font-semibold">Choose Your Dentist</h2>
+        <h2 className="text-2xl font-semibold">Choose Your doctor</h2>
         <DoctorCardsLoading />
       </div>
     );
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-semibold">Choose Your Dentist</h2>
+      <h2 className="text-2xl font-semibold">Choose Your doctor</h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {dentists.map((dentist) => (
+        {doctors.map((doctor) => (
           <Card
-            key={dentist.id}
+            key={doctor.id}
             className={`cursor-pointer transition-all hover:shadow-lg ${
-              selectedDentistId === dentist.id ? "ring-2 ring-primary" : ""
+              selectedDoctorId === doctor.id ? "ring-2 ring-primary" : ""
             }`}
-            onClick={() => onSelectDentist(dentist.id)}
+            onClick={() => onSelectDoctor(doctor.id)}
           >
             <CardHeader className="pb-4">
               <div className="flex items-start gap-4">
                 <Image
-                  src={dentist.imageUrl!}
-                  alt={dentist.name}
+                  src={doctor.imageUrl!}
+                  alt={doctor.name}
                   width={64}
                   height={64}
                   className="w-16 h-16 rounded-full object-cover"
                 />
                 <div className="flex-1">
-                  <CardTitle className="text-lg">{dentist.name}</CardTitle>
+                  <CardTitle className="text-lg">{doctor.name}</CardTitle>
                   <CardDescription className="text-primary font-medium">
-                    {dentist.speciality || "General Dentistry"}
+                    {doctor.speciality || "General doctorry"}
                   </CardDescription>
                   <div className="flex items-center gap-2 mt-2">
                     <div className="flex items-center gap-1">
@@ -60,7 +60,7 @@ function DoctorSelectionStep({
                       <span className="text-sm font-medium">5</span>
                     </div>
                     <span className="text-sm text-muted-foreground">
-                      ({dentist.appointmentCount} appointments)
+                      ({doctor.appointmentCount} appointments)
                     </span>
                   </div>
                 </div>
@@ -74,10 +74,10 @@ function DoctorSelectionStep({
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <PhoneIcon className="w-4 h-4" />
-                <span>{dentist.phone}</span>
+                <span>{doctor.phone}</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                {dentist.bio || "Experienced dental professional providing quality care."}
+                {doctor.bio || "Experienced dental professional providing quality care."}
               </p>
               <Badge variant="secondary">Licensed Professional</Badge>
             </CardContent>
@@ -85,7 +85,7 @@ function DoctorSelectionStep({
         ))}
       </div>
 
-      {selectedDentistId && (
+      {selectedDoctorId && (
         <div className="flex justify-end">
           <Button onClick={onContinue}>Continue to Time Selection</Button>
         </div>

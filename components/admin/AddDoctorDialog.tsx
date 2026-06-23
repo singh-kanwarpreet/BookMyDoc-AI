@@ -78,7 +78,7 @@ function AddDoctorDialog({ isOpen, onClose }: AddDoctorDialogProps) {
                 id="new-speciality"
                 value={newDoctor.speciality}
                 onChange={(e) => setNewDoctor({ ...newDoctor, speciality: e.target.value })}
-                placeholder="General Dentistry"
+                placeholder="General doctorry"
               />
             </div>
           </div>

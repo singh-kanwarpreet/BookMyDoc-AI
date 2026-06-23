@@ -11,7 +11,7 @@ function WelcomeSection() {
         <div>
           <h1 className="text-4xl font-bold mb-2">AI Voice Assistant</h1>
           <p className="text-muted-foreground">
-            Talk to your AI dental assistant using natural voice commands. Get instant advice and
+            Talk to your AI healthcare assistant using natural voice commands. Get instant advice and
             professional guidance.
           </p>
         </div>

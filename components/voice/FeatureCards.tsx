@@ -23,7 +23,7 @@ function FeatureCards() {
           </div>
           <div className="flex items-start gap-3">
             <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-            <span className="text-sm">Ask questions about dental health and treatments</span>
+            <span className="text-sm">Ask questions about health and treatments</span>
           </div>
           <div className="flex items-start gap-3">
             <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
@@ -46,7 +46,7 @@ function FeatureCards() {
             </div>
             Features
           </CardTitle>
-          <CardDescription>Advanced capabilities for dental care</CardDescription>
+          <CardDescription>Advanced capabilities for healthcare</CardDescription>
         </CardHeader>
         <CardContent className="relative space-y-4">
           <div className="flex items-center p-3 bg-muted/30 rounded-xl">

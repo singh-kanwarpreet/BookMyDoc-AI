@@ -29,3 +29,41 @@ export const formatPhoneNumber = (value: string) => {
 
   return `${phoneNumber.slice(0, 5)} ${phoneNumber.slice(5)}`;
 };
+
+export const getNext5Days = () => {
+  const dates = [];
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  for (let i = 0; i < 5; i++) {
+    const date = new Date(tomorrow);
+    date.setDate(date.getDate() + i);
+    dates.push(date.toISOString().split("T")[0]);
+  }
+
+  return dates;
+};
+
+export const getAvailableTimeSlots = () => {
+  return [
+    "09:00",
+    "09:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+  ];
+};
+
+export const APPOINTMENT_TYPES = [
+  { id: "general", name: "General Consultation", duration: "20 min", price: "₹500" },
+  { id: "followup", name: "Follow-up Consultation", duration: "15 min", price: "₹300" },
+  { id: "health-check", name: "Routine Health Checkup", duration: "30 min", price: "₹800" },
+  { id: "emergency", name: "Urgent / Emergency Visit", duration: "30 min", price: "₹1000" },
+];

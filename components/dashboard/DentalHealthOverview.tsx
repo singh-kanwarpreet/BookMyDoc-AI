@@ -15,9 +15,9 @@ async function DentalHealthOverview() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <BrainIcon className="size-5 text-primary" />
-          Your Dental Health
+          Your Health
         </CardTitle>
-        <CardDescription>Keep track of your dental care journey</CardDescription>
+        <CardDescription>Keep track of your healthcare journey</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="grid md:grid-cols-3 gap-6">
@@ -49,7 +49,7 @@ async function DentalHealthOverview() {
             <div>
               <h4 className="font-semibold text-primary mb-1">Ready to get started?</h4>
               <p className="text-sm text-muted-foreground mb-3">
-                Book your first appointment or try our AI voice assistant for instant dental advice.
+                Book your first appointment or try our AI voice assistant for instant healthcare advice.
               </p>
               <div className="flex gap-2">
                 <Link href="/voice">

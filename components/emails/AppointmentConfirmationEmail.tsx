@@ -41,21 +41,21 @@ function AppointmentConfirmationEmail({
             <Section className="mb-8 text-center">
               <div className="inline-flex items-center">
                 <Img
-                  src="https://i.ibb.co.com/tRy6cC2/logo.png"
+                  src="https://www.citypng.com/public/uploads/preview/email-send-forward-illustration-icon-701751694973203b6sgfmqszl.png"
                   width="50"
                   height="50"
-                  alt="DentWise"
+                  alt="BookMyDoc AI"
                   className="inline rounded-lg align-middle"
                 />
                 <Text className="m-0 ml-3 inline text-[20px] font-bold text-blue-600">
-                  DentWise
+                  BookMyDoc AI
                 </Text>
               </div>
             </Section>
 
             {/* Heading */}
             <Heading className="my-7.5 text-center text-[24px] font-bold text-gray-800">
-              Appointment Confirmed! 🦷
+              Appointment Confirmed! 
             </Heading>
 
             {/* Intro */}
@@ -116,7 +116,7 @@ function AppointmentConfirmationEmail({
                 Location
               </Text>
               <Text className="mb-0 mt-0 text-[16px] font-semibold text-gray-800">
-                Dental Center
+                BookMyDoc AI Center
               </Text>
             </Section>
 
@@ -141,12 +141,12 @@ function AppointmentConfirmationEmail({
             <Text className="mt-8 mb-4 text-[16px] leading-6.5 text-gray-700">
               Best regards,
               <br />
-              The DentWise Team
+              The BookMyDoc AI Team
             </Text>
 
             <Text className="mt-4 mb-0 text-center text-[14px] leading-6 text-gray-500">
               If you have any questions, please contact us at
-              support@dentwise.com
+              support@bookmydocai.com
             </Text>
           </Container>
         </Body>

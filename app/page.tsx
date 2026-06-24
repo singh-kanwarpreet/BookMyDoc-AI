@@ -17,13 +17,24 @@ export default async function Home() {
 
   return (
     <>
-   <Header />
-   <Hero />
-   <HowItWorks />
-   <WhatToAsk />
-   <PricingSection />
-   <CTA /> 
-  <Footer />
-  </>
+      <Header />
+      <Hero />
+      
+      <div id="how-it-works" className="scroll-mt-16">
+        <HowItWorks />
+      </div>
+
+      <WhatToAsk />
+      
+      <div id="pricing" className="scroll-mt-16">
+        <PricingSection />
+      </div>
+      
+      <CTA /> 
+      
+      <div id="about" className="scroll-mt-16">
+        <Footer />
+      </div>
+    </>
   );
 }

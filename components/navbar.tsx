@@ -45,7 +45,6 @@ function Navbar() {
             href="/dashboard"
             className="flex items-center gap-3 transition-opacity hover:opacity-90"
           >
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-linear-to-br from-blue-600 to-cyan-400 shadow-md">
               <Image
                 src="/logo.png"
                 alt="BookMyDoc AI Logo"
@@ -53,7 +52,6 @@ function Navbar() {
                 height={28}
                 className="w-7 object-contain"
               />
-            </div>
 
             <div className="hidden sm:block">
               <h1 className="bg-linear-to-r from-blue-700 to-cyan-500 bg-clip-text text-lg font-bold text-transparent">

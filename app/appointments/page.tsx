@@ -99,7 +99,7 @@ function AppointmentsPage() {
         {/* header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Book an Appointment</h1>
-          <p className="text-muted-foreground">Find and book with verified doctors in your area</p>
+          <p className="text-muted-foreground">Find and book with verified dentists in your area</p>
         </div>
 
         <ProgressSteps currentStep={currentStep} />

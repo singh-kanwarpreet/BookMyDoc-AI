@@ -49,7 +49,7 @@ export async function getUserAppointments() {
     if (!user) throw new Error("User not found. Please ensure your account is properly set up.");
 
     const appointments = await prisma.appointment.findMany({
-      where: { userId: user.id },
+      where: { userId: user.id, status: "CONFIRMED", }, 
       include: {
         user: { select: { firstName: true, lastName: true, email: true } },
         doctor: { select: { name: true, imageUrl: true } },

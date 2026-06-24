@@ -9,7 +9,7 @@ async function VoicePage() {
   const { has } = await auth();
 
   const hasProPlan = has({ plan: "pro_plan" });
-
+  console.log("User has Pro Plan:", hasProPlan);
   if (!hasProPlan) return <ProPlanRequired />;
 
   return (

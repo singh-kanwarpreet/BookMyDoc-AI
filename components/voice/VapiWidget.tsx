@@ -108,7 +108,7 @@ function VapiWidget() {
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold font-mono">
           <span>Talk to Your </span>
-          <span className="text-primary uppercase">AI Dental Assistant</span>
+          <span className="text-primary uppercase">AI Healthcare Assistant</span>
         </h1>
         <p className="text-muted-foreground mt-2">
           Have a voice conversation with our AI assistant for dental advice and guidance
@@ -157,7 +157,7 @@ function VapiWidget() {
                 <div className="absolute inset-0 bg-linear-to-b from-primary/10 to-primary/5"></div>
                 <Image
                   src="/logo.png"
-                  alt="AI Dental Assistant"
+                  alt="AI Healthcare Assistant"
                   width={80}
                   height={80}
                   className="w-20 h-20 object-contain"
@@ -165,8 +165,8 @@ function VapiWidget() {
               </div>
             </div>
 
-            <h2 className="text-xl font-bold text-foreground">DentWise AI</h2>
-            <p className="text-sm text-muted-foreground mt-1">Dental Assistant</p>
+            <h2 className="text-xl font-bold text-foreground">BookMyDoc AI</h2>
+            <p className="text-sm text-muted-foreground mt-1">Healthcare Assistant</p>
 
             {/* SPEAKING INDICATOR */}
             <div

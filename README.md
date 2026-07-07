@@ -27,7 +27,6 @@ Users can securely create an account, book appointments through an intuitive 3-s
 - 💳 Subscription plans
   - Free
   - Pro
-  - Premium
 - 📂 PostgreSQL database with Prisma ORM
 - ⚡ Fast server state management using TanStack Query
 - 🎨 Beautiful responsive UI using Tailwind CSS & shadcn/ui
@@ -40,7 +39,7 @@ Users can securely create an account, book appointments through an intuitive 3-s
 
 ## 🏠 Landing Page
 
-> Add screenshot here
+
 
 ![Landing Page](screenshots/landing-page.png)
 
@@ -48,7 +47,7 @@ Users can securely create an account, book appointments through an intuitive 3-s
 
 ## 📅 Appointment Booking
 
-> Add screenshot here
+
 
 ![Appointment Booking](screenshots/booking-flow.png)
 
@@ -56,7 +55,7 @@ Users can securely create an account, book appointments through an intuitive 3-s
 
 ## 🤖 AI Voice Agent
 
-> Add screenshot here
+
 
 ![AI Voice Agent](screenshots/ai-agent.png)
 
@@ -64,7 +63,6 @@ Users can securely create an account, book appointments through an intuitive 3-s
 
 ## 📊 Admin Dashboard
 
-> Add screenshot here
 
 ![Admin Dashboard](screenshots/admin-dashboard.png)
 
@@ -72,7 +70,7 @@ Users can securely create an account, book appointments through an intuitive 3-s
 
 ## 💳 Pricing Plans
 
-> Add screenshot here
+
 
 ![Pricing Plans](screenshots/pricing.png)
 
@@ -203,7 +201,6 @@ to access the Admin Dashboard.
 .
 ├── app
 ├── components
-├── actions
 ├── hooks
 ├── lib
 ├── prisma
@@ -242,6 +239,4 @@ It helps others discover the project and motivates future improvements.
 
 ---
 
-## 📄 License
 
-This project is licensed under the **MIT License**.
